@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { routerConfig } from './router.options'
+import appRouterConfigDefault, { routerConfig as appRouterConfig } from './app/router.options'
 import routes from './routes'
 
 describe('router.options', () => {
@@ -7,6 +8,8 @@ describe('router.options', () => {
     expect(typeof routerConfig.routes).toBe('function')
     const resolvedRoutes = routerConfig.routes!([])
     expect(resolvedRoutes).toEqual(routes)
+    expect(appRouterConfigDefault).toBe(routerConfig)
+    expect(appRouterConfig).toBe(routerConfig)
   })
 
   it('declares all expected route paths', () => {

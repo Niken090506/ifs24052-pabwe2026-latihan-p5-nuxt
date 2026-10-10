@@ -3,11 +3,11 @@ import { mount } from '@vue/test-utils'
 import App from './App.vue'
 
 describe('App', () => {
-  it('renders root element and RouterView', () => {
+  it('renders root element and NuxtPage', () => {
     const wrapper = mount(App, {
       global: {
         stubs: {
-          RouterView: { template: '<div data-testid="router-view-stub"></div>' }
+          NuxtPage: { template: '<div data-testid="router-view-stub"></div>' }
         }
       }
     })

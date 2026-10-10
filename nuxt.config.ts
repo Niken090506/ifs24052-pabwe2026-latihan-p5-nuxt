@@ -18,6 +18,11 @@ export default defineNuxtConfig({
       tailwindcss()
     ]
   },
+  nitro: {
+    externals: {
+      inline: [/[\\/]nuxt[\\/]dist[\\/]/]
+    }
+  },
   devServer: {
     port: Number(process.env.APP_PORT || 3000)
   },
