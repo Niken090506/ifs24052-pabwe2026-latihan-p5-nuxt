@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     externals: {
       inline: [/[\\/]nuxt[\\/]dist[\\/]/]
     }
-  },
+  } as any,
   devServer: {
     port: Number(process.env.APP_PORT || 3000)
   },
