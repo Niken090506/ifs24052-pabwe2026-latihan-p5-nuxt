@@ -12,10 +12,10 @@ describe('RegisterPage', () => {
   it('renders register form elements and link to login', () => {
     const { wrapper } = renderWithProviders(RegisterPage)
 
-    expect(wrapper.find('input#register-name').exists()).toBe(true)
-    expect(wrapper.find('input#register-email').exists()).toBe(true)
-    expect(wrapper.find('input#register-password').exists()).toBe(true)
-    expect(wrapper.find('button#btn-register-submit').exists()).toBe(true)
+    expect(wrapper.find('input#register-name-input').exists()).toBe(true)
+    expect(wrapper.find('input#register-email-input').exists()).toBe(true)
+    expect(wrapper.find('input#register-password-input').exists()).toBe(true)
+    expect(wrapper.find('button#register-submit-button').exists()).toBe(true)
     expect(wrapper.find('a#link-to-login').exists()).toBe(true)
   })
 
@@ -39,9 +39,9 @@ describe('RegisterPage', () => {
     const successSpy = vi.spyOn(toolsHelper, 'showSuccessDialog').mockResolvedValue()
     const routerPushSpy = vi.spyOn(router, 'push')
 
-    await wrapper.find('input#register-name').setValue('Delcom Student')
-    await wrapper.find('input#register-email').setValue('student@delcom.org')
-    await wrapper.find('input#register-password').setValue('password123')
+    await wrapper.find('input#register-name-input').setValue('Delcom Student')
+    await wrapper.find('input#register-email-input').setValue('student@delcom.org')
+    await wrapper.find('input#register-password-input').setValue('password123')
     await wrapper.find('form').trigger('submit.prevent')
 
     expect(registerSpy).toHaveBeenCalledWith({
@@ -59,9 +59,9 @@ describe('RegisterPage', () => {
     vi.spyOn(authStore, 'register').mockRejectedValue(new Error('Email sudah terdaftar'))
     const errorSpy = vi.spyOn(toolsHelper, 'showErrorDialog').mockResolvedValue()
 
-    await wrapper.find('input#register-name').setValue('Delcom Student')
-    await wrapper.find('input#register-email').setValue('existing@delcom.org')
-    await wrapper.find('input#register-password').setValue('password123')
+    await wrapper.find('input#register-name-input').setValue('Delcom Student')
+    await wrapper.find('input#register-email-input').setValue('existing@delcom.org')
+    await wrapper.find('input#register-password-input').setValue('password123')
     await wrapper.find('form').trigger('submit.prevent')
 
     expect(errorSpy).toHaveBeenCalledWith('Email sudah terdaftar')
@@ -73,9 +73,9 @@ describe('RegisterPage', () => {
     vi.spyOn(authStore, 'register').mockRejectedValue({})
     const errorSpy = vi.spyOn(toolsHelper, 'showErrorDialog').mockResolvedValue()
 
-    await wrapper.find('input#register-name').setValue('Delcom Student')
-    await wrapper.find('input#register-email').setValue('existing@delcom.org')
-    await wrapper.find('input#register-password').setValue('password123')
+    await wrapper.find('input#register-name-input').setValue('Delcom Student')
+    await wrapper.find('input#register-email-input').setValue('existing@delcom.org')
+    await wrapper.find('input#register-password-input').setValue('password123')
     await wrapper.find('form').trigger('submit.prevent')
 
     expect(errorSpy).toHaveBeenCalledWith('Pendaftaran gagal. Silakan coba lagi.')
@@ -89,7 +89,7 @@ describe('RegisterPage', () => {
     const { wrapper } = renderWithProviders(RegisterPage, { pinia })
     await flushPromises()
 
-    expect(wrapper.find('button#btn-register-submit').text()).toContain('Mendaftarkan Akun...')
-    expect(wrapper.find('button#btn-register-submit').attributes('disabled')).toBeDefined()
+    expect(wrapper.find('button#register-submit-button').text()).toContain('Mendaftarkan Akun...')
+    expect(wrapper.find('button#register-submit-button').attributes('disabled')).toBeDefined()
   })
 })

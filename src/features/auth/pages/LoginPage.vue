@@ -7,12 +7,12 @@
 
     <form @submit.prevent="handleSubmit" class="space-y-4" novalidate>
       <div>
-        <label for="login-email" class="block text-sm font-semibold text-slate-700 mb-1.5">
+        <label for="login-email-input" class="block text-sm font-semibold text-slate-700 mb-1.5">
           Alamat Email
         </label>
         <div class="relative">
           <input
-            id="login-email"
+            id="login-email-input"
             name="email"
             type="email"
             autocomplete="email"
@@ -27,12 +27,12 @@
       </div>
 
       <div>
-        <label for="login-password" class="block text-sm font-semibold text-slate-700 mb-1.5">
+        <label for="login-password-input" class="block text-sm font-semibold text-slate-700 mb-1.5">
           Kata Sandi
         </label>
         <div class="relative">
           <input
-            id="login-password"
+            id="login-password-input"
             name="password"
             type="password"
             autocomplete="current-password"
@@ -49,7 +49,7 @@
       <button
         type="submit"
         :disabled="authStore.isLoading"
-        id="btn-login-submit"
+        id="login-submit-button"
         class="w-full mt-2 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-semibold text-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md shadow-indigo-600/25 transition-all disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
       >
         <span v-if="authStore.isLoading">Memproses Masuk...</span>

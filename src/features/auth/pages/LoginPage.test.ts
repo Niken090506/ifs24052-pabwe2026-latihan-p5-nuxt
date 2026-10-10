@@ -12,9 +12,9 @@ describe('LoginPage', () => {
   it('renders login form elements and links', () => {
     const { wrapper } = renderWithProviders(LoginPage)
 
-    expect(wrapper.find('input#login-email').exists()).toBe(true)
-    expect(wrapper.find('input#login-password').exists()).toBe(true)
-    expect(wrapper.find('button#btn-login-submit').exists()).toBe(true)
+    expect(wrapper.find('input#login-email-input').exists()).toBe(true)
+    expect(wrapper.find('input#login-password-input').exists()).toBe(true)
+    expect(wrapper.find('button#login-submit-button').exists()).toBe(true)
     expect(wrapper.find('a#link-to-register').exists()).toBe(true)
   })
 
@@ -37,8 +37,8 @@ describe('LoginPage', () => {
     const successSpy = vi.spyOn(toolsHelper, 'showSuccessDialog').mockResolvedValue()
     const routerPushSpy = vi.spyOn(router, 'push')
 
-    await wrapper.find('input#login-email').setValue('user@delcom.org')
-    await wrapper.find('input#login-password').setValue('password123')
+    await wrapper.find('input#login-email-input').setValue('user@delcom.org')
+    await wrapper.find('input#login-password-input').setValue('password123')
     await wrapper.find('form').trigger('submit.prevent')
 
     expect(loginSpy).toHaveBeenCalledWith({
@@ -55,8 +55,8 @@ describe('LoginPage', () => {
     vi.spyOn(authStore, 'login').mockRejectedValue(new Error('Kredensial tidak valid'))
     const errorSpy = vi.spyOn(toolsHelper, 'showErrorDialog').mockResolvedValue()
 
-    await wrapper.find('input#login-email').setValue('wrong@delcom.org')
-    await wrapper.find('input#login-password').setValue('wrongpass')
+    await wrapper.find('input#login-email-input').setValue('wrong@delcom.org')
+    await wrapper.find('input#login-password-input').setValue('wrongpass')
     await wrapper.find('form').trigger('submit.prevent')
 
     expect(errorSpy).toHaveBeenCalledWith('Kredensial tidak valid')
@@ -68,8 +68,8 @@ describe('LoginPage', () => {
     vi.spyOn(authStore, 'login').mockRejectedValue({})
     const errorSpy = vi.spyOn(toolsHelper, 'showErrorDialog').mockResolvedValue()
 
-    await wrapper.find('input#login-email').setValue('wrong@delcom.org')
-    await wrapper.find('input#login-password').setValue('wrongpass')
+    await wrapper.find('input#login-email-input').setValue('wrong@delcom.org')
+    await wrapper.find('input#login-password-input').setValue('wrongpass')
     await wrapper.find('form').trigger('submit.prevent')
 
     expect(errorSpy).toHaveBeenCalledWith('Gagal masuk, periksa email dan kata sandi Anda.')
@@ -83,7 +83,7 @@ describe('LoginPage', () => {
     const { wrapper } = renderWithProviders(LoginPage, { pinia })
     await flushPromises()
 
-    expect(wrapper.find('button#btn-login-submit').text()).toContain('Memproses Masuk...')
-    expect(wrapper.find('button#btn-login-submit').attributes('disabled')).toBeDefined()
+    expect(wrapper.find('button#login-submit-button').text()).toContain('Memproses Masuk...')
+    expect(wrapper.find('button#login-submit-button').attributes('disabled')).toBeDefined()
   })
 })
