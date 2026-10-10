@@ -32,6 +32,18 @@ export default defineNuxtConfig({
         }
       }
     },
+    hooks: {
+      'render:html'(htmlContext: any) {
+        if (htmlContext.head) {
+          htmlContext.head = htmlContext.head.map((chunk: string) => {
+            return chunk.replace(
+              /<link rel="stylesheet" href="([^"]+\.css)"([^>]*)>/g,
+              '<link rel="preload" href="$1" as="style"$2><link rel="stylesheet" href="$1" media="print" onload="this.media=\'all\'"$2><noscript><link rel="stylesheet" href="$1"$2></noscript>'
+            )
+          })
+        }
+      }
+    },
     externals: {
       inline: [/[\\/]nuxt[\\/]dist[\\/]/]
     }
