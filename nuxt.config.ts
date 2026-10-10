@@ -6,18 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   ssr: false,
   routeRules: {
-    '/**': {
-      ssr: false,
-      headers: {
-        'Cache-Control': 'public, max-age=0, must-revalidate'
-      }
-    },
-    '/robots.txt': {
-      headers: {
-        'Content-Type': 'text/plain',
-        'Cache-Control': 'public, max-age=86400'
-      }
-    }
+    '/**': { ssr: false }
   },
   srcDir: 'src/',
   compatibilityDate: '2024-11-01',
@@ -30,6 +19,19 @@ export default defineNuxtConfig({
     ]
   },
   nitro: {
+    routeRules: {
+      '/**': {
+        headers: {
+          'Cache-Control': 'public, max-age=0, must-revalidate'
+        }
+      },
+      '/robots.txt': {
+        headers: {
+          'Content-Type': 'text/plain',
+          'Cache-Control': 'public, max-age=86400'
+        }
+      }
+    },
     externals: {
       inline: [/[\\/]nuxt[\\/]dist[\\/]/]
     }
