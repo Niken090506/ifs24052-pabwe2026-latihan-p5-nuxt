@@ -209,7 +209,7 @@ describe('useCashFlowsStore', () => {
     await store.deleteCashFlow(1)
 
     expect(store.cashFlows.length).toBe(1)
-    expect(store.cashFlows[0].id).toBe(2)
+    expect(store.cashFlows[0]?.id).toBe(2)
     expect(store.isCashFlowDeleted).toBe(true)
     expect(store.isCashFlowDelete).toBe(false)
   })
