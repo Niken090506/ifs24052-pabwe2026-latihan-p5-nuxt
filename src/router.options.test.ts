@@ -45,4 +45,33 @@ describe('router.options', () => {
       }
     }
   })
+
+  it('handles navigation guards for /auth and / routes correctly', () => {
+    const authRoute = routes.find((r) => r.path === '/auth')
+    const dashboardRoute = routes.find((r) => r.path === '/')
+
+    const nextSpy = vi.fn()
+
+    // Unauthenticated accessing / redirects to /auth/login
+    localStorage.removeItem('delcom_access_token')
+    ;(dashboardRoute?.beforeEnter as Function)({} as any, {} as any, nextSpy)
+    expect(nextSpy).toHaveBeenCalledWith('/auth/login')
+
+    // Authenticated accessing / proceeds
+    localStorage.setItem('delcom_access_token', 'token-123')
+    nextSpy.mockClear()
+    ;(dashboardRoute?.beforeEnter as Function)({} as any, {} as any, nextSpy)
+    expect(nextSpy).toHaveBeenCalledWith()
+
+    // Authenticated accessing /auth redirects to /
+    nextSpy.mockClear()
+    ;(authRoute?.beforeEnter as Function)({} as any, {} as any, nextSpy)
+    expect(nextSpy).toHaveBeenCalledWith('/')
+
+    // Unauthenticated accessing /auth proceeds
+    localStorage.removeItem('delcom_access_token')
+    nextSpy.mockClear()
+    ;(authRoute?.beforeEnter as Function)({} as any, {} as any, nextSpy)
+    expect(nextSpy).toHaveBeenCalledWith()
+  })
 })

@@ -160,6 +160,9 @@ async function fetchDetail() {
   try {
     await cashFlowsStore.fetchCashFlowById(cashFlowId.value)
   } catch (error: any) {
+    if (error?.status === 401 || error?.message?.includes('autentikasi')) {
+      return
+    }
     await showErrorDialog(error.message || 'Gagal memuat rincian transaksi')
   }
 }

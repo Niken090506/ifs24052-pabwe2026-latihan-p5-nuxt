@@ -192,6 +192,9 @@ onMounted(async () => {
       nameInput.setValue(usersStore.currentUser.name)
     }
   } catch (error: any) {
+    if (error?.status === 401 || error?.message?.includes('autentikasi')) {
+      return
+    }
     showErrorDialog(error.message || 'Gagal memuat profil pengguna')
   }
 })

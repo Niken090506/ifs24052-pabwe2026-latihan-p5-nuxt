@@ -320,4 +320,18 @@ describe('ProfilePage', () => {
 
     expect(errorSpy).toHaveBeenCalledWith('Gagal memuat profil pengguna')
   })
+
+  it('silently ignores 401 unauthenticated error when fetchProfile fails on mount', async () => {
+    const pinia = createMockPinia()
+    const usersStore = useUsersStore(pinia)
+    const authErr = new Error('Belum melakukan autentikasi') as any
+    authErr.status = 401
+    vi.spyOn(usersStore, 'fetchProfile').mockRejectedValue(authErr)
+    const errorSpy = vi.spyOn(toolsHelper, 'showErrorDialog').mockResolvedValue()
+
+    renderWithProviders(ProfilePage, { pinia })
+    await flushPromises()
+
+    expect(errorSpy).not.toHaveBeenCalled()
+  })
 })

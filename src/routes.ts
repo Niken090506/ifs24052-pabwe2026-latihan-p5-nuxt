@@ -1,9 +1,17 @@
 import type { RouteRecordRaw } from 'vue-router'
+import { getAccessToken } from '@/helpers/apiHelper'
 
 export const routes: RouteRecordRaw[] = [
   {
     path: '/auth',
     component: () => import('@/features/auth/layouts/AuthLayout.vue'),
+    beforeEnter: (_to, _from, next) => {
+      if (getAccessToken()) {
+        next('/')
+      } else {
+        next()
+      }
+    },
     children: [
       {
         path: '',
@@ -24,6 +32,13 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('@/features/cashflows/layouts/CashFlowLayout.vue'),
+    beforeEnter: (_to, _from, next) => {
+      if (!getAccessToken()) {
+        next('/auth/login')
+      } else {
+        next()
+      }
+    },
     children: [
       {
         path: '',

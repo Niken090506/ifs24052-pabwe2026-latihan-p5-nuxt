@@ -380,6 +380,9 @@ async function fetchData() {
     await cashFlowsStore.fetchCashFlows(params)
     await cashFlowsStore.fetchLabels()
   } catch (error: any) {
+    if (error?.status === 401 || error?.message?.includes('autentikasi')) {
+      return
+    }
     showErrorDialog(error.message || 'Gagal memuat catatan arus kas')
   }
 }

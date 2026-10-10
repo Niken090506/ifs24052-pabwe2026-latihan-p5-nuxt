@@ -415,4 +415,18 @@ describe('HomePage', () => {
     await wrapper.find('button#btn-delete-all-cashflows').trigger('click')
     expect(errorSpy).toHaveBeenCalledWith('Gagal mereset catatan arus kas')
   })
+
+  it('silently ignores 401 authentication errors when fetching cash flows on mount', async () => {
+    const pinia = createMockPinia()
+    const cashFlowsStore = useCashFlowsStore(pinia)
+    const authErr = new Error('Belum melakukan autentikasi') as any
+    authErr.status = 401
+    vi.spyOn(cashFlowsStore, 'fetchCashFlows').mockRejectedValue(authErr)
+    const errorSpy = vi.spyOn(toolsHelper, 'showErrorDialog').mockResolvedValue()
+
+    renderWithProviders(HomePage, { pinia })
+    await flushPromises()
+
+    expect(errorSpy).not.toHaveBeenCalled()
+  })
 })

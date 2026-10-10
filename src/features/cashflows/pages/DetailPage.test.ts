@@ -316,4 +316,19 @@ describe('DetailPage', () => {
 
     expect(fetchSpy).not.toHaveBeenCalledWith('')
   })
+
+  it('silently ignores 401 unauthenticated error when fetchDetail fails', async () => {
+    const pinia = createMockPinia()
+    const cashFlowsStore = useCashFlowsStore(pinia)
+    const authErr = new Error('Belum melakukan autentikasi') as any
+    authErr.status = 401
+    vi.spyOn(cashFlowsStore, 'fetchCashFlowById').mockRejectedValue(authErr)
+    const errorSpy = vi.spyOn(toolsHelper, 'showErrorDialog').mockResolvedValue()
+
+    const { router } = renderWithProviders(DetailPage, { pinia })
+    await router.push('/cash-flows/99')
+    await flushPromises()
+
+    expect(errorSpy).not.toHaveBeenCalled()
+  })
 })
