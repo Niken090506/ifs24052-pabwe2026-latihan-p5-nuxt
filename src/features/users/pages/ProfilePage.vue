@@ -75,7 +75,7 @@
               :value="usersStore.currentUser?.email || ''"
               class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-500 cursor-not-allowed"
             />
-            <p class="mt-1 text-xs text-slate-400">Email akun tidak dapat diubah secara langsung.</p>
+            <p class="mt-1 text-xs text-slate-600">Email akun tidak dapat diubah secara langsung.</p>
           </div>
 
           <button

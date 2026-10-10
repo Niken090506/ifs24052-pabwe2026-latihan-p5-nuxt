@@ -17,7 +17,7 @@
         </div>
         <div class="hidden sm:block">
           <span class="text-base font-bold text-slate-900 leading-none">Delcom Cash Flow</span>
-          <span class="block text-[11px] text-slate-400 font-medium">Sistem Keuangan Mandiri</span>
+          <span class="block text-[11px] text-slate-600 font-medium">Sistem Keuangan Mandiri</span>
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
           <p id="navbar-user-name" class="text-sm font-bold text-slate-800 leading-tight">
             {{ displayName }}
           </p>
-          <p id="navbar-user-email" class="text-xs text-slate-500">
+          <p id="navbar-user-email" class="text-xs text-slate-600">
             {{ displayEmail }}
           </p>
         </div>
@@ -55,7 +55,7 @@
           id="btn-navbar-logout"
           title="Keluar dari akun"
           aria-label="Tombol Keluar"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200/60 transition-colors cursor-pointer"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-rose-800 hover:text-rose-900 bg-rose-50 hover:bg-rose-100 border border-rose-200 transition-colors cursor-pointer"
         >
           <span>Keluar</span>
         </button>

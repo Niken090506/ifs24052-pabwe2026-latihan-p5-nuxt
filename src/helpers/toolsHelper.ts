@@ -5,7 +5,7 @@ export async function showSuccessDialog(message: string, title: string = 'Berhas
     icon: 'success',
     title,
     text: message,
-    confirmButtonColor: '#0284c7',
+    confirmButtonColor: '#15803d',
     timer: 2500,
     timerProgressBar: true
   })
@@ -16,7 +16,7 @@ export async function showErrorDialog(message: string, title: string = 'Gagal!')
     icon: 'error',
     title,
     text: message,
-    confirmButtonColor: '#ef4444'
+    confirmButtonColor: '#b91c1c'
   })
 }
 
@@ -33,8 +33,8 @@ export async function showConfirmDialog(
     showCancelButton: true,
     confirmButtonText: confirmText,
     cancelButtonText: cancelText,
-    confirmButtonColor: '#ef4444',
-    cancelButtonColor: '#64748b',
+    confirmButtonColor: '#b91c1c',
+    cancelButtonColor: '#334155',
     reverseButtons: true
   })
   return Boolean(result.isConfirmed)

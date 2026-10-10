@@ -70,7 +70,7 @@
           >
             <span>{{ cashFlow.type === 'inflow' ? '↓ Pemasukan' : '↑ Pengeluaran' }}</span>
           </span>
-          <span class="text-xs font-mono text-slate-400">ID: #{{ cashFlow.id }}</span>
+          <span class="text-xs font-mono text-slate-600">ID: #{{ cashFlow.id }}</span>
         </div>
 
         <h1
@@ -80,14 +80,14 @@
         >
           {{ cashFlow.type === 'inflow' ? '+' : '-' }} {{ formatRupiah(cashFlow.nominal) }}
         </h1>
-        <p class="text-xs text-slate-500 mt-1">Nominal transaksi tercatat</p>
+        <p class="text-xs text-slate-600 mt-1">Nominal transaksi tercatat</p>
       </div>
 
       <!-- Information List -->
       <div class="p-6 sm:p-8 space-y-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Kategori / Label</h3>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600">Kategori / Label</h3>
             <div class="mt-1">
               <span id="detail-label" class="inline-block px-3 py-1 rounded-lg bg-slate-100 text-slate-800 text-sm font-semibold font-mono">
                 #{{ cashFlow.label }}
@@ -96,7 +96,7 @@
           </div>
 
           <div>
-            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Sumber Dana</h3>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600">Sumber Dana</h3>
             <p id="detail-source" class="mt-1 text-sm font-semibold text-slate-800">
               <span v-if="cashFlow.source === 'cash'">💵 Kas Tunai (Cash)</span>
               <span v-else-if="cashFlow.source === 'savings'">🏦 Rekening Tabungan (Savings)</span>
@@ -106,21 +106,21 @@
         </div>
 
         <div class="border-t border-slate-100 pt-6">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Deskripsi Catatan</h3>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600">Deskripsi Catatan</h3>
           <p id="detail-description" class="mt-2 text-slate-700 text-sm leading-relaxed whitespace-pre-line bg-slate-50 p-4 rounded-xl border border-slate-100">
             {{ cashFlow.description }}
           </p>
         </div>
 
-        <div class="border-t border-slate-100 pt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-500">
+        <div class="border-t border-slate-100 pt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-600">
           <div>
-            <span class="block text-slate-400 font-medium">Waktu Dibuat:</span>
+            <span class="block text-slate-600 font-medium">Waktu Dibuat:</span>
             <span id="detail-created-at" class="font-semibold text-slate-700 mt-0.5 block">
               {{ formatDateTime(cashFlow.created_at) }}
             </span>
           </div>
           <div>
-            <span class="block text-slate-400 font-medium">Terakhir Diperbarui:</span>
+            <span class="block text-slate-600 font-medium">Terakhir Diperbarui:</span>
             <span id="detail-updated-at" class="font-semibold text-slate-700 mt-0.5 block">
               {{ formatDateTime(cashFlow.updated_at) }}
             </span>

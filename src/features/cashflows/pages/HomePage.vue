@@ -26,7 +26,7 @@
           type="button"
           @click="handleDeleteAll"
           id="btn-delete-all-cashflows"
-          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200/80 transition-all cursor-pointer"
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm text-rose-800 hover:text-rose-900 bg-rose-50 hover:bg-rose-100 border border-rose-300 transition-all cursor-pointer"
           title="Hapus semua riwayat catatan arus kas"
         >
           <span>🗑️</span>
@@ -52,61 +52,61 @@
       <!-- Total Inflow -->
       <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600">Total Pemasukan</span>
-          <span class="text-emerald-500 bg-emerald-50 text-xs px-2 py-0.5 rounded-full font-bold">Inflow</span>
+          <span class="text-xs font-semibold uppercase tracking-wider text-emerald-800">Total Pemasukan</span>
+          <span class="text-emerald-800 bg-emerald-100 text-xs px-2 py-0.5 rounded-full font-bold">Inflow</span>
         </div>
-        <p id="metric-total-inflow" class="text-2xl sm:text-3xl font-extrabold text-emerald-700 mt-3 tracking-tight">
+        <p id="metric-total-inflow" class="text-2xl sm:text-3xl font-extrabold text-emerald-800 mt-3 tracking-tight">
           {{ formatRupiah(cashFlowsStore.totalInflow) }}
         </p>
-        <p class="text-xs text-slate-400 mt-2">Akumulasi seluruh kas masuk</p>
+        <p class="text-xs text-slate-600 mt-2">Akumulasi seluruh kas masuk</p>
       </div>
 
       <!-- Total Outflow -->
       <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold uppercase tracking-wider text-rose-600">Total Pengeluaran</span>
-          <span class="text-rose-500 bg-rose-50 text-xs px-2 py-0.5 rounded-full font-bold">Outflow</span>
+          <span class="text-xs font-semibold uppercase tracking-wider text-rose-800">Total Pengeluaran</span>
+          <span class="text-rose-800 bg-rose-100 text-xs px-2 py-0.5 rounded-full font-bold">Outflow</span>
         </div>
-        <p id="metric-total-outflow" class="text-2xl sm:text-3xl font-extrabold text-rose-700 mt-3 tracking-tight">
+        <p id="metric-total-outflow" class="text-2xl sm:text-3xl font-extrabold text-rose-800 mt-3 tracking-tight">
           {{ formatRupiah(cashFlowsStore.totalOutflow) }}
         </p>
-        <p class="text-xs text-slate-400 mt-2">Akumulasi seluruh kas keluar</p>
+        <p class="text-xs text-slate-600 mt-2">Akumulasi seluruh kas keluar</p>
       </div>
 
       <!-- Cash Balance -->
       <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Saldo Kas Tunai</span>
-          <span class="text-slate-500 bg-slate-100 text-xs px-2 py-0.5 rounded-full font-medium">Cash</span>
+          <span class="text-xs font-semibold uppercase tracking-wider text-slate-700">Saldo Kas Tunai</span>
+          <span class="text-slate-700 bg-slate-100 text-xs px-2 py-0.5 rounded-full font-medium">Cash</span>
         </div>
         <p id="metric-cash-balance" class="text-xl sm:text-2xl font-bold text-slate-900 mt-3 tracking-tight">
           {{ formatRupiah(cashFlowsStore.cashBalance) }}
         </p>
-        <p class="text-xs text-slate-400 mt-2">Saldo uang tunai di dompet</p>
+        <p class="text-xs text-slate-600 mt-2">Saldo uang tunai di dompet</p>
       </div>
 
       <!-- Savings Balance -->
       <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold uppercase tracking-wider text-sky-600">Saldo Tabungan</span>
-          <span class="text-sky-600 bg-sky-50 text-xs px-2 py-0.5 rounded-full font-medium">Savings</span>
+          <span class="text-xs font-semibold uppercase tracking-wider text-sky-800">Saldo Tabungan</span>
+          <span class="text-sky-800 bg-sky-100 text-xs px-2 py-0.5 rounded-full font-medium">Savings</span>
         </div>
         <p id="metric-savings-balance" class="text-xl sm:text-2xl font-bold text-slate-900 mt-3 tracking-tight">
           {{ formatRupiah(cashFlowsStore.savingsBalance) }}
         </p>
-        <p class="text-xs text-slate-400 mt-2">Saldo rekening bank & simpanan</p>
+        <p class="text-xs text-slate-600 mt-2">Saldo rekening bank & simpanan</p>
       </div>
 
       <!-- Loans Balance -->
       <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-semibold uppercase tracking-wider text-amber-600">Saldo Pinjaman</span>
-          <span class="text-amber-600 bg-amber-50 text-xs px-2 py-0.5 rounded-full font-medium">Loans</span>
+          <span class="text-xs font-semibold uppercase tracking-wider text-amber-800">Saldo Pinjaman</span>
+          <span class="text-amber-800 bg-amber-100 text-xs px-2 py-0.5 rounded-full font-medium">Loans</span>
         </div>
         <p id="metric-loans-balance" class="text-xl sm:text-2xl font-bold text-slate-900 mt-3 tracking-tight">
           {{ formatRupiah(cashFlowsStore.loansBalance) }}
         </p>
-        <p class="text-xs text-slate-400 mt-2">Saldo dana hutang/pinjaman</p>
+        <p class="text-xs text-slate-600 mt-2">Saldo dana hutang/pinjaman</p>
       </div>
     </section>
 
@@ -201,7 +201,7 @@
         <h2 class="text-base font-bold text-slate-900">
           Riwayat Transaksi Arus Kas
         </h2>
-        <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">
+        <span class="text-xs font-semibold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-full">
           {{ cashFlowsStore.cashFlows.length }} Catatan
         </span>
       </div>
@@ -227,7 +227,7 @@
       <div v-else class="overflow-x-auto">
         <table class="w-full text-left border-collapse" id="table-cashflows">
           <thead>
-            <tr class="bg-slate-50/75 border-b border-slate-200/70 text-[11px] font-bold uppercase tracking-wider text-slate-500">
+            <tr class="bg-slate-50/75 border-b border-slate-200/70 text-[11px] font-bold uppercase tracking-wider text-slate-700">
               <th scope="col" class="py-3 px-4">Jenis</th>
               <th scope="col" class="py-3 px-4">Kategori / Label</th>
               <th scope="col" class="py-3 px-4">Sumber Dana</th>
@@ -249,8 +249,8 @@
                   :class="[
                     'inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold',
                     item.type === 'inflow'
-                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                      : 'bg-rose-50 text-rose-700 border border-rose-200'
+                      ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                      : 'bg-rose-100 text-rose-800 border border-rose-200'
                   ]"
                 >
                   <span>{{ item.type === 'inflow' ? '↓ Pemasukan' : '↑ Pengeluaran' }}</span>
@@ -279,13 +279,13 @@
               <!-- Nominal -->
               <td
                 class="py-3.5 px-4 text-right font-bold whitespace-nowrap"
-                :class="item.type === 'inflow' ? 'text-emerald-600' : 'text-rose-600'"
+                :class="item.type === 'inflow' ? 'text-emerald-800' : 'text-rose-700'"
               >
                 {{ item.type === 'inflow' ? '+' : '-' }} {{ formatRupiah(item.nominal) }}
               </td>
 
               <!-- Date -->
-              <td class="py-3.5 px-4 text-xs text-slate-500 whitespace-nowrap">
+              <td class="py-3.5 px-4 text-xs text-slate-600 whitespace-nowrap">
                 {{ formatDateTime(item.created_at) }}
               </td>
 

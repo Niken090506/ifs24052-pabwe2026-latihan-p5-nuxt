@@ -55,9 +55,9 @@
         <div class="min-w-0 flex-1">
           <h2 class="text-base font-bold text-slate-900 truncate">{{ user.name }}</h2>
           <p class="text-xs text-slate-500 truncate mt-0.5">{{ user.email }}</p>
-          <div class="mt-3 flex items-center gap-1.5 text-[11px] text-slate-400">
+          <div class="mt-3 flex items-center gap-1.5 text-[11px] text-slate-600">
             <span>Bergabung sejak:</span>
-            <span class="font-medium text-slate-600">{{ formatDate(user.created_at) }}</span>
+            <span class="font-medium text-slate-800">{{ formatDate(user.created_at) }}</span>
           </div>
         </div>
       </div>
