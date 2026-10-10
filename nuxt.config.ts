@@ -6,7 +6,18 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   ssr: false,
   routeRules: {
-    '/**': { ssr: false }
+    '/**': {
+      ssr: false,
+      headers: {
+        'Cache-Control': 'public, max-age=0, must-revalidate'
+      }
+    },
+    '/robots.txt': {
+      headers: {
+        'Content-Type': 'text/plain',
+        'Cache-Control': 'public, max-age=86400'
+      }
+    }
   },
   srcDir: 'src/',
   compatibilityDate: '2024-11-01',
@@ -51,8 +62,20 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         {
+          rel: 'preload',
+          as: 'style',
+          href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap'
+        },
+        {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap'
+          href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap',
+          media: 'print',
+          onload: "this.media='all'"
+        }
+      ],
+      noscript: [
+        {
+          innerHTML: '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">'
         }
       ]
     }

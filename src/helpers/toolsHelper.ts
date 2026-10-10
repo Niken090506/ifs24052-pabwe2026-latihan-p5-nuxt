@@ -1,6 +1,10 @@
-import Swal from 'sweetalert2'
+async function getSwal() {
+  const { default: Swal } = await import('sweetalert2')
+  return Swal
+}
 
 export async function showSuccessDialog(message: string, title: string = 'Berhasil!'): Promise<void> {
+  const Swal = await getSwal()
   await Swal.fire({
     icon: 'success',
     title,
@@ -12,6 +16,7 @@ export async function showSuccessDialog(message: string, title: string = 'Berhas
 }
 
 export async function showErrorDialog(message: string, title: string = 'Gagal!'): Promise<void> {
+  const Swal = await getSwal()
   await Swal.fire({
     icon: 'error',
     title,
@@ -26,6 +31,7 @@ export async function showConfirmDialog(
   confirmText: string = 'Ya, Lanjutkan',
   cancelText: string = 'Batal'
 ): Promise<boolean> {
+  const Swal = await getSwal()
   const result = await Swal.fire({
     icon: 'warning',
     title,
